@@ -64,7 +64,7 @@ agent = create_tool_calling_agent(llm, tools, prompt)
 
 from langchain.agents import AgentExecutor
 
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
-agent_executor.invoke({"input": "What is INFER?"})
+print(agent_executor.invoke({"input": "What is the pdf about"}).get('output'))
 

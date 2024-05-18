@@ -78,10 +78,10 @@ prompt = hub.pull("hwchase17/openai-functions-agent")
 # prompt.messages
 
 agent = create_tool_calling_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
 
 # User question
 user_input = ""
 while user_input != "XXX":
     user_input = input("Enter your question: ")
-    agent_executor.invoke({"input": user_input})
+    print(agent_executor.invoke({"input": user_input}).get('output'))
