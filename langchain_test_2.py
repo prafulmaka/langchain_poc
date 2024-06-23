@@ -23,16 +23,13 @@ llm = ChatOpenAI(api_key=config["OPEN_AI_KEY"], model="gpt-3.5-turbo-0125", temp
 
 # Create tool for reading pdf
 @tool
-def pdf_tool(user_input: str) -> str:
+def hubspot_docs_tool(user_input: str) -> str:
     """
-    This tool is used to get documentation from the PDF document shared by the user.
+    This tool is used to get HubSpot documentation and answer user questions specific to HubSpot.
     """
 
-    pdf_path_input = input("Enter file path: ")
-    print(f"Fetching details from: {pdf_path_input}")
-
-    # Load PDF
-    loader = PyPDFLoader(pdf_path_input)
+    # Load from webpage
+    loader = WebBaseLoader("https://python.langchain.com/v0.1/docs/get_started/introduction/")
 
     docs = loader.load()
 
@@ -44,8 +41,8 @@ def pdf_tool(user_input: str) -> str:
 
     # Create retriever
     retriever = vector.as_retriever()
-    pdf_retriever = create_retriever_tool(retriever, "pdf_analyzer_agent", "Helps analyze, summarize and retrieve data from PDF documents.")
-    response = pdf_retriever.invoke(user_input)
+    hubspot_docs_retriever = create_retriever_tool(retriever, "hubspot_docs_tool", "This tool is used to answer questions specific to the HubSpot documentation.")
+    response = hubspot_docs_retriever.invoke(user_input)
     return response
 
 @tool
@@ -71,7 +68,7 @@ def langchain_docs_tool(user_input: str) -> str:
     response = langchain_docs_retriever.invoke(user_input)
     return response
 
-tools = [pdf_tool, langchain_docs_tool]
+tools = [hubspot_docs_tool, langchain_docs_tool]
 
 # Get the prompt to use - you can modify this!
 prompt = hub.pull("hwchase17/openai-functions-agent")
