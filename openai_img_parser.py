@@ -5,9 +5,6 @@ from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
-api_key=config["OPEN_AI_KEY"]
-
-
 # Function to encode the image
 def encode_image(image_path):
   with open(image_path, "rb") as image_file:
@@ -21,7 +18,7 @@ base64_image = encode_image(image_path)
 
 headers = {
   "Content-Type": "application/json",
-  "Authorization": f"Bearer {api_key}"
+  "Authorization": f"Bearer {config['OPEN_AI_KEY']}"
 }
 
 payload = {
