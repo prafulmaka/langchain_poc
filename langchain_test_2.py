@@ -29,7 +29,7 @@ def hubspot_docs_tool(user_input: str) -> str:
     """
 
     # Load from webpage
-    loader = WebBaseLoader("https://python.langchain.com/v0.1/docs/get_started/introduction/")
+    loader = WebBaseLoader("https://developers.hubspot.com/docs/api/overview")
 
     docs = loader.load()
 
