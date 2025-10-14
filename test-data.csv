@@ -1,0 +1,13 @@
+﻿OrderID,Region,Product,Category,Month,Sales,Quantity
+1001,North,Laptop,Electronics,January,1200,2
+1002,North,Phone,Electronics,January,800,5
+1003,South,Laptop,Electronics,January,1300,3
+1004,South,Tablet,Electronics,January,900,4
+1005,North,Laptop,Electronics,February,1500,3
+1006,North,Phone,Electronics,February,850,6
+1007,South,Laptop,Electronics,February,1400,2
+1008,South,Tablet,Electronics,February,950,3
+1009,North,Chair,Furniture,January,300,4
+1010,South,Desk,Furniture,January,700,2
+1011,North,Chair,Furniture,February,320,3
+1012,South,Desk,Furniture,February,750,1
